@@ -1,20 +1,48 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Dashboard Cek Ongkir - Raja Ongkir</div>
-
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                    <!-- Data wilayah asal -->
+                    <div class="form-group row">
+                        <!-- Provinsi Asal -->
+                        <label for="name" class="col-md-2 col-form-label text-md-right">Provinsi Asal</label>
+                        <div class="col-md-4">
+                            <select id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                <option>Ok</option>
+                            </select>
                         </div>
-                    @endif
+                        <!-- Kota Asal -->
+                        <label for="name" class="col-md-2 col-form-label text-md-right">Kota Asal</label>
+                        <div class="col-md-4">
+                            <select id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                <option>Ok</option>
+                            </select>
+                        </div>
+                    </div>
 
-                    {{ __('You are logged in!') }}
+                    <!-- Data wilayah tujuan -->
+                    <div class="form-group row">
+                        <!-- Provinsi Tujuan -->
+                        <label for="name" class="col-md-2 col-form-label text-md-right">Provinsi Tujuan</label>
+                        <div class="col-md-4">
+                            <select id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                <option>Ok</option>
+                            </select>
+                        </div>
+                        <!-- Kota Tujuan -->
+                        <label for="name" class="col-md-2 col-form-label text-md-right">Kota Tujuan</label>
+                        <div class="col-md-4">
+                            <select id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                <option>Ok</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <hr>
                 </div>
             </div>
         </div>
