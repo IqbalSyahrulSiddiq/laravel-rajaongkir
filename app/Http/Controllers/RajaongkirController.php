@@ -15,15 +15,13 @@ class RajaongkirController extends Controller
         $request = Http::get($baseUrl.'/province?key='.$apiKey);
         $response = $request->getBody();
         $listProvinsi =  json_decode($response);
-
-        dd($listProvinsi);
-        /* //dd($listProvinsi);
-
-        return response()->json([
+        $dataProvinsi = $listProvinsi->rajaongkir->results;
+      
+        /* return response()->json([
             'data' => $listProvinsi,
             'message' => 'Sukses'
-        ]); */
+        ]);  */
 
-        return view('home',compact('listProvinsi'));
+        return view('home',compact('dataProvinsi'));
     }
 }

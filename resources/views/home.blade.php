@@ -12,7 +12,7 @@
                         <label for="name" class="col-md-2 col-form-label text-md-right">Provinsi Asal</label>
                         <div class="col-md-4">
                             <select id="provinsi_asal" class="form-control" name="provinsi_asal">
-                                @foreach(json_decode($listProvinsi->results) as $provinsiAsal)
+                                @foreach($dataProvinsi as $provinsiAsal)
                                     <option value="$provinsiAsal->province_id">{{ $provinsiAsal->province }}</option>
                                 @endforeach
                             </select>
