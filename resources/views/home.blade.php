@@ -30,15 +30,16 @@
                         <!-- Provinsi Tujuan -->
                         <label for="name" class="col-md-2 col-form-label text-md-right">Provinsi Tujuan</label>
                         <div class="col-md-4">
-                            <select id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
-                                <option>Ok</option>
+                            <select id="provTujuan" class="form-control" name="provTujuan">
+                                @foreach($dataProvinsi as $provinsiAsal)
+                                    <option value="{{$provinsiAsal->province_id}}">{{ $provinsiAsal->province }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <!-- Kota Tujuan -->
                         <label for="name" class="col-md-2 col-form-label text-md-right">Kota Tujuan</label>
                         <div class="col-md-4">
-                            <select id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
-                                <option>Ok</option>
+                        <select id="kokabTujuan" class="form-control" name="kokabTujuan">
                             </select>
                         </div>
                     </div>
@@ -65,7 +66,7 @@ $('#provAsal').change(function(){
                 $("#kokabAsal").empty();
                 $("#kokabAsal").append('<option>---Kota / Kabupaten---</option>');
                 $.each(res,function(index,item){
-                    $("#kokabAsal").append('<option value="'+item.city_id+'">'+item.city_name+'</option>');
+                    $("#kokabAsal").append('<option value="'+item.city_id+'">'+item.type+' '+item.city_name+'</option>');
                 });
             }else{
                $("#kokabAsal").empty();
@@ -74,6 +75,31 @@ $('#provAsal').change(function(){
         });
     }else{
         $("#kokabAsal").empty();
+    }      
+   });
+
+   $('#provTujuan').change(function(){
+    var provTujuan = $(this).val();    
+    //console.log(provTujuan);
+    if(provTujuan){
+        $.ajax({
+           type:"GET",
+           url:"/getkokabTujuan?provTujuan="+provTujuan,
+           dataType: 'JSON',
+           success:function(res){               
+            if(res){
+                $("#kokabTujuan").empty();
+                $("#kokabTujuan").append('<option>---Kota / Kabupaten---</option>');
+                $.each(res,function(index,item){
+                    $("#kokabTujuan").append('<option value="'+item.city_id+'">'+item.type+' '+item.city_name+'</option>');
+                });
+            }else{
+               $("#kokabTujuan").empty();
+            }
+           }
+        });
+    }else{
+        $("#kokabTujuan").empty();
     }      
    });
 </script>
