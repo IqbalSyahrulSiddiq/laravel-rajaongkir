@@ -11,17 +11,16 @@
                         <!-- Provinsi Asal -->
                         <label for="name" class="col-md-2 col-form-label text-md-right">Provinsi Asal</label>
                         <div class="col-md-4">
-                            <select id="provinsi_asal" class="form-control" name="provinsi_asal">
+                            <select id="provAsal" class="form-control" name="provAsal">
                                 @foreach($dataProvinsi as $provinsiAsal)
-                                    <option value="$provinsiAsal->province_id">{{ $provinsiAsal->province }}</option>
+                                    <option value="{{$provinsiAsal->province_id}}">{{ $provinsiAsal->province }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <!-- Kota Asal -->
-                        <label for="name" class="col-md-2 col-form-label text-md-right">Kota Asal</label>
+                        <label for="name" class="col-md-2 col-form-label text-md-right">Kota / Kabupaten Asal</label>
                         <div class="col-md-4">
-                            <select id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
-                                <option>Ok</option>
+                            <select id="kokabAsal" class="form-control" name="kokabAsal">
                             </select>
                         </div>
                     </div>
@@ -51,4 +50,31 @@
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$('#provAsal').change(function(){
+    var provAsal = $(this).val();    
+    //console.log(provAsal);
+    if(provAsal){
+        $.ajax({
+           type:"GET",
+           url:"/getkokabAsal?provAsal="+provAsal,
+           dataType: 'JSON',
+           success:function(res){               
+            if(res){
+                $("#kokabAsal").empty();
+                $("#kokabAsal").append('<option>---Kota / Kabupaten---</option>');
+                $.each(res,function(index,item){
+                    $("#kokabAsal").append('<option value="'+item.city_id+'">'+item.city_name+'</option>');
+                });
+            }else{
+               $("#kokabAsal").empty();
+            }
+           }
+        });
+    }else{
+        $("#kokabAsal").empty();
+    }      
+   });
+</script>
 @endsection

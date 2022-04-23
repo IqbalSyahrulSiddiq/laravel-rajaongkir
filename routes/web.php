@@ -21,3 +21,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/provinsi','RajaongkirController@listProvinsi')->name('rajaongkir.provinsi');
+Route::get('/getkokabAsal','RajaongkirController@listKokab')->name('rajaongkir.kokab');

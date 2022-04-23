@@ -24,4 +24,17 @@ class RajaongkirController extends Controller
 
         return view('home',compact('dataProvinsi'));
     }
+
+    public function listKokab(Request $request)
+    {
+        $apiKey = env('RAJA_ONGKIR_API_KEY');
+        $baseUrl = env('RAJA_ONGKIR_BASE_URL');
+        $request = Http::get($baseUrl.'/city?key='.$apiKey.'&province='.$request->provAsal);
+        $response = $request->getBody();
+        $listKokab =  json_decode($response);
+        $dataKokab = $listKokab->rajaongkir->results;
+        
+        //dd($dataKokab);
+        return response()->json($dataKokab);
+    }
 }
