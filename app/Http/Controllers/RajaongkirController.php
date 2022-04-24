@@ -50,4 +50,20 @@ class RajaongkirController extends Controller
         //dd($dataKokab);
         return response()->json($dataKokab);
     }
+
+    public function kalkulasiOngkir(Request $request)
+    {
+        $apiKey = env('RAJA_ONGKIR_API_KEY');
+        $baseUrl = env('RAJA_ONGKIR_BASE_URL');
+        $request = Http::post($baseUrl.'/cost',[
+            'key' => $apiKey,
+            'origin' => $request->kokabAsal,
+            'destination' => $request->kokabTujuan,
+            'courier' => $request->kurir,
+            'weight' => $request->berat_gram
+        ]);
+
+        return $request;
+
+    }
 }

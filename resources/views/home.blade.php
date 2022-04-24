@@ -6,46 +6,69 @@
             <div class="card">
                 <div class="card-header">Dashboard Cek Ongkir - Raja Ongkir</div>
                 <div class="card-body">
-                    <!-- Data wilayah asal -->
-                    <div class="form-group row">
-                        <!-- Provinsi Asal -->
-                        <label for="name" class="col-md-2 col-form-label text-md-right">Provinsi Asal</label>
-                        <div class="col-md-4">
-                            <select id="provAsal" class="form-control" name="provAsal">
-                                @foreach($dataProvinsi as $provinsiAsal)
-                                    <option value="{{$provinsiAsal->province_id}}">{{ $provinsiAsal->province }}</option>
-                                @endforeach
-                            </select>
+                    <form>
+                        <!-- Data wilayah asal -->
+                        <div class="form-group row">
+                            <!-- Provinsi Asal -->
+                            <label for="name" class="col-md-2 col-form-label text-md-right">Provinsi Asal</label>
+                            <div class="col-md-4">
+                                <select id="provAsal" class="form-control" name="provAsal">
+                                    @foreach($dataProvinsi as $provinsiAsal)
+                                        <option value="{{$provinsiAsal->province_id}}">{{ $provinsiAsal->province }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <!-- Kota Asal -->
+                            <label for="name" class="col-md-2 col-form-label text-md-right">Kota / Kabupaten Asal</label>
+                            <div class="col-md-4">
+                                <select id="kokabAsal" class="form-control" name="kokabAsal">
+                                </select>
+                            </div>
                         </div>
-                        <!-- Kota Asal -->
-                        <label for="name" class="col-md-2 col-form-label text-md-right">Kota / Kabupaten Asal</label>
-                        <div class="col-md-4">
-                            <select id="kokabAsal" class="form-control" name="kokabAsal">
-                            </select>
-                        </div>
-                    </div>
 
-                    <!-- Data wilayah tujuan -->
-                    <div class="form-group row">
-                        <!-- Provinsi Tujuan -->
-                        <label for="name" class="col-md-2 col-form-label text-md-right">Provinsi Tujuan</label>
-                        <div class="col-md-4">
-                            <select id="provTujuan" class="form-control" name="provTujuan">
-                                @foreach($dataProvinsi as $provinsiAsal)
-                                    <option value="{{$provinsiAsal->province_id}}">{{ $provinsiAsal->province }}</option>
-                                @endforeach
-                            </select>
+                        <!-- Data wilayah tujuan -->
+                        <div class="form-group row">
+                            <!-- Provinsi Tujuan -->
+                            <label for="name" class="col-md-2 col-form-label text-md-right">Provinsi Tujuan</label>
+                            <div class="col-md-4">
+                                <select id="provTujuan" class="form-control" name="provTujuan">
+                                    @foreach($dataProvinsi as $provinsiAsal)
+                                        <option value="{{$provinsiAsal->province_id}}">{{ $provinsiAsal->province }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <!-- Kota Tujuan -->
+                            <label for="name" class="col-md-2 col-form-label text-md-right">Kota Tujuan</label>
+                            <div class="col-md-4">
+                            <select id="kokabTujuan" class="form-control" name="kokabTujuan">
+                                </select>
+                            </div>
                         </div>
-                        <!-- Kota Tujuan -->
-                        <label for="name" class="col-md-2 col-form-label text-md-right">Kota Tujuan</label>
-                        <div class="col-md-4">
-                        <select id="kokabTujuan" class="form-control" name="kokabTujuan">
-                            </select>
+                        <!-- List Kurir -->
+                        <div class="form-group row">
+                            <label for="name" class="col-md-2 col-form-label text-md-right">Kurir</label>
+                            <div class="col-md-4">
+                                <select id="kurir" class="form-control" name="kurir">
+                                        <option value="jne">JNE</option>
+                                        <option value="pos">Pos Indonesia</option>
+                                        <option value="tiki">Tiki</option>
+                                </select>
+                            </div>
+                            <label for="name" class="col-md-2 col-form-label text-md-right">Berat Paket (gram)</label>
+                            <div class="col-md-4">
+                                <input type="number" id="berat_gram" class="form-control" name="berat_gram">
+                            </div>
+                            
                         </div>
-                    </div>
-                    <div class="my-5"></div>
-                    <hr>
-                    <div class="my-5"></div>
+                        <div class="form-group row">
+                        <div class="col-md-6">
+                                <button class="btn btn-md btn-primary btn-block">Cek Ongkir</button>
+                            </div>
+                        </div>
+                        <div class="my-5"></div>
+                        <hr>
+                        <div class="my-5"></div>
+                    </form>
                 </div>
             </div>
         </div>

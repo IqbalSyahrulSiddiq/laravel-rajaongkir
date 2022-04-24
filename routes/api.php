@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/kokab','RajaongkirController@listKokab');
+Route::post('/ongkir','RajaongkirController@kalkulasiOngkir');
